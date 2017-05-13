@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+    <title>Starter Kit</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js"></script>
+</head>
+
+<body>
+{{ ^user}}
+<!--all code here runs if the user does NOT have a username-->
+<header>
+    <h1>Chat Room</h1>
+    <h2>Log-in</h2>
+</header>
+    <form>
+        <input type="text" placeholder="username">
+        <button type="button" id="login">Log in</button>
+    </form>
+{{ /user }}
+
+{{ #user }}
+    <!-- all code here runs if the user has a name -->
+    <header>
+        <h1>Chat Room</h1>
+        <h2>Welcome</h2>
+    </header>
+
+    <main>
+        <ul class='message-container'>
+            <!--<li>test</li>-->
+        </ul>   
+    </main>
+
+    <form>
+        <input type="textarea" id='message' rows="20" cols="20" placeholder="">
+        <button type="button" id="submit">Send</button>
+    </form>
+
+{{ /user }}
+
+</body>
+
+</html>
