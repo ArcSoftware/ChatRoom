@@ -20,9 +20,17 @@ public class ChatRoomJSONController {
     @Autowired
     MessageRepo messages;
 
-    @RequestMapping(path = "/get-messages.json", method = RequestMethod.GET)
+    @RequestMapping(path = "/get-messages", method = RequestMethod.GET)
     public ArrayList<Message> jsonReturn(Message messageText) {
+
         return (ArrayList<Message>) messages.findAll();
+    }
+
+
+    @RequestMapping(path = "/add-message", method = RequestMethod.POST)
+    public void jsonAdd(@RequestBody String message) {
+        Message newMessage = new Message(message);
+        messages.save(newMessage);
     }
 
 

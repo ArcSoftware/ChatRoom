@@ -40,7 +40,7 @@ public class ChatRoomController {
         return "redirect:/";
     }
 
-    @RequestMapping(path = "/add-message", method = RequestMethod.POST)
+    @RequestMapping(path = "/add-messages", method = RequestMethod.POST)
     public String message(String message) {
         Message newMessage = new Message(message);
         messages.save(newMessage);
