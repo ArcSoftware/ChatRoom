@@ -30,8 +30,7 @@ public class ChatRoomController {
     public String home(Model model, HttpSession session) {
         List<Message> messageList = (List<Message>) messages.findAll();
         model.addAttribute("name", session.getAttribute("userName"));
-        model.addAttribute("messages", messageList);
-        return "home";
+        return "public/index.html";
     }
 
     @RequestMapping(path = "/login", method = RequestMethod.POST)
