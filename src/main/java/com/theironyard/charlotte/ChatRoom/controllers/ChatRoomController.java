@@ -28,9 +28,9 @@ public class ChatRoomController {
 
     @RequestMapping(path = "/", method = RequestMethod.GET)
     public String home(Model model, HttpSession session) {
-        List<Message> messageList = (List<Message>) messages.findAll();
+//        List<Message> messageList = (List<Message>) messages.findAll();
         model.addAttribute("name", session.getAttribute("userName"));
-        return "public/index.html";
+        return "index";
     }
 
     @RequestMapping(path = "/login", method = RequestMethod.POST)

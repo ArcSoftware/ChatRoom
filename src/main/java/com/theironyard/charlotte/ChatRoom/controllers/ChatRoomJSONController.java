@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Jake on 5/13/17.
@@ -21,16 +22,14 @@ public class ChatRoomJSONController {
     MessageRepo messages;
 
     @RequestMapping(path = "/get-messages", method = RequestMethod.GET)
-    public ArrayList<Message> jsonReturn(Message messageText) {
-
-        return (ArrayList<Message>) messages.findAll();
+    public List<Message> getMessags() {
+        return (List<Message>) messages.findAll();
     }
 
 
     @RequestMapping(path = "/add-message", method = RequestMethod.POST)
-    public void jsonAdd(@RequestBody String message) {
-        Message newMessage = new Message(message);
-        messages.save(newMessage);
+    public void jsonAdd(@RequestBody Message message) {
+        messages.save(message);
     }
 
 

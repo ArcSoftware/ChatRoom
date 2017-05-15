@@ -10,19 +10,19 @@
 </head>
 
 <body>
-{{ ^user}}
+{{^name}}
 <!--all code here runs if the user does NOT have a username-->
 <header>
     <h1>Chat Room</h1>
     <h2>Log-in</h2>
 </header>
-    <form>
-        <input type="text" placeholder="username">
-        <button type="button" id="login">Log in</button>
+    <form action="/login" method="post">
+        <input type="text" placeholder="Enter your name" name="userName"/>
+        <button type="submit">Login</button>
     </form>
-{{ /user }}
+{{/name}}
 
-{{ #user }}
+{{#name}}
     <!-- all code here runs if the user has a name -->
     <header>
         <h1>Chat Room</h1>
@@ -40,7 +40,7 @@
         <button type="button" id="submit">Send</button>
     </form>
 
-{{ /user }}
+{{/name}}
 
 </body>
 

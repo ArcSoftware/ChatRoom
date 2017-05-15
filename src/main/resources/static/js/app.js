@@ -27,7 +27,7 @@ function getMessages(i) {
   let request = new XMLHttpRequest();
 
   // using GET, access data from this URL
-  request.open('GET', '192.168.1.6:8080/get-messages'); 
+  request.open('GET', 'localhost:8080/get-messages');
   // add-message
 
   // wait for the GET request to finish
@@ -63,7 +63,7 @@ window.addEventListener('load', function () {
 
     //new POST request
     let request = new XMLHttpRequest();
-    request.open('POST', '192.168.1.6:8080/add-messages'); 
+    request.open('POST', 'localhost:8080/add-messages');
     //     
     request.addEventListener('load', function () {
       console.log('received response');
