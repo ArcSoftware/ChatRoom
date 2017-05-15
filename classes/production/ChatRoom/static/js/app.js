@@ -27,7 +27,7 @@ function getMessages(i) {
   let request = new XMLHttpRequest();
 
   // using GET, access data from this URL
-  request.open('GET', 'http://localhost:8080/get-messages');
+  request.open('GET', 'localhost:8080/get-messages');
   // add-message
 
   // wait for the GET request to finish
@@ -63,10 +63,7 @@ window.addEventListener('load', function () {
 
     //new POST request
     let request = new XMLHttpRequest();
-    request.open('POST', 'http://localhost:8080/add-message');
-    request.setRequestHeader('Content-Type', 'application/json');
-    request.withCredentials = true;
-
+    request.open('POST', 'localhost:8080/add-messages');
     //     
     request.addEventListener('load', function () {
       console.log('received response');
@@ -83,36 +80,40 @@ window.addEventListener('load', function () {
 
   }); // close userInput event listener
 
-//  setInterval(function () {
-//
-//    let children = document.querySelector('.message-container').childElementCount;
-//    console.log(children);
-//    // goal of this function is to get NEW messages
-//
-//    // create a variable, 'req', representing a new XMLHttpRequest
-//    let request = new XMLHttpRequest();
-//
-//    // using GET, access data from this URL
-//    request.open('GET', 'http://localhost:8080/get-messages');
-//
-//    // wait for the GET request to finish
-//    request.addEventListener('load', function () {
-//
-//      // new variable, 'rawData', set = to the JSON parsed values
-//      let rawData = JSON.parse(request.responseText);
-//      console.log(rawData);
-//
-//      // for each instance of message in rawData, call the showMessages function (at top)
-//      for (let i = children; i < rawData.chats.length; i++) {
-//        showMessages(rawData.chats[children]);
-//        console.log(i);
-//      }
-//
-//    }); //close event listener
-//    request.send();
-//
-//
-//  }, 500);
+
+
+
+  setInterval(function () {
+
+    let children = document.querySelector('.message-container').childElementCount;
+    console.log(children);
+    // goal of this function is to get NEW messages
+
+    // create a variable, 'req', representing a new XMLHttpRequest
+    let request = new XMLHttpRequest();
+
+    // using GET, access data from this URL
+    request.open('GET', '192.168.1.6:8080/get-messages');
+
+    // wait for the GET request to finish
+    request.addEventListener('load', function () {
+
+      // new variable, 'rawData', set = to the JSON parsed values
+      let rawData = JSON.parse(request.responseText);
+      console.log(rawData);
+
+      // for each instance of message in rawData, call the showMessages function (at top)
+      for (let i = children; i < rawData.chats.length; i++) {
+        showMessages(rawData.chats[children]);
+        console.log(i);
+      }
+
+    }); //close event listener
+    request.send();
+
+
+  }, 500);
 
   getMessages();
+
 });

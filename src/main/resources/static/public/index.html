@@ -5,8 +5,8 @@
 <head>
     <title>Starter Kit</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="style.css">
-    <script src="app.js"></script>
+    <link rel="stylesheet" href="/public/style.css">
+    <script src="/public/app.js"></script>
 </head>
 
 <body>
@@ -16,9 +16,9 @@
     <h1>Chat Room</h1>
     <h2>Log-in</h2>
 </header>
-    <form>
-        <input type="text" placeholder="username">
-        <button type="button" id="login">Log in</button>
+    <form action="/login" method="post">
+        <input type="text" placeholder="Enter your name" name="userName"/>
+        <button type="submit">Login</button>
     </form>
 {{ /user }}
 

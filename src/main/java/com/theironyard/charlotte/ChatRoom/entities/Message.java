@@ -10,13 +10,13 @@ import javax.persistence.*;
 public class Message {
     @Id
     @GeneratedValue
-        int id;
+    int id;
 
     @Column(nullable = false)
-        String message;
+    String message;
 
     @ManyToOne
-        User user;
+    User user;
 
 
     public Message(String message) {
@@ -24,5 +24,29 @@ public class Message {
     }
 
     public Message() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

@@ -1,6 +1,5 @@
 package com.theironyard.charlotte.ChatRoom.controllers;
 
-import com.theironyard.charlotte.ChatRoom.entities.Message;
 import com.theironyard.charlotte.ChatRoom.entities.User;
 import com.theironyard.charlotte.ChatRoom.services.MessageRepo;
 import com.theironyard.charlotte.ChatRoom.services.UserRepo;
@@ -11,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpSession;
-import java.util.List;
 
 /**
  * Created by Jake on 5/13/17.
@@ -36,14 +34,12 @@ public class ChatRoomController {
     @RequestMapping(path = "/login", method = RequestMethod.POST)
     public String login(HttpSession session, String userName) {
         session.setAttribute("userName", userName);
+        if (users.findFirstByName(userName) == null) {
+            User newUser = new User(userName);
+            users.save(newUser);
+        }
+        // make a new user object and save it if it doesn't exist
+
         return "redirect:/";
     }
-
-    @RequestMapping(path = "/add-messages", method = RequestMethod.POST)
-    public String message(String message) {
-        Message newMessage = new Message(message);
-        messages.save(newMessage);
-        return "redirect:/";
-    }
-
 }
