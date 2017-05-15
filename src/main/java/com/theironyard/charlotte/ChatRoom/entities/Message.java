@@ -1,6 +1,7 @@
 package com.theironyard.charlotte.ChatRoom.entities;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 /**
  * Created by Jake on 5/13/17.
@@ -15,6 +16,9 @@ public class Message {
     @Column(nullable = false)
     String message;
 
+    @Column
+    LocalDateTime added;
+
     @ManyToOne
     User user;
 
@@ -24,6 +28,14 @@ public class Message {
     }
 
     public Message() {
+    }
+
+    public LocalDateTime getAdded() {
+        return added;
+    }
+
+    public void setAdded(LocalDateTime added) {
+        this.added = added;
     }
 
     public int getId() {

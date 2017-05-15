@@ -38,8 +38,8 @@ function getMessages(i) {
     console.log(rawData);
 
     // for each instance of message in rawData, call the showMessages function (at top)
-    for (let i = 0; i < rawData.chats.length; i++) {
-      showMessages(rawData.chats[i]);
+    for (let i = 0; i < rawData.length; i++) {
+      showMessages(rawData[i]);
       console.log(i);
     }
 
